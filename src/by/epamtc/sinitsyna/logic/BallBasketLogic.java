@@ -5,28 +5,31 @@
 
 package by.epamtc.sinitsyna.logic;
 
+import java.math.BigInteger;
 import java.util.Map;
 
 import by.epamtc.sinitsyna.bean.Ball;
 import by.epamtc.sinitsyna.bean.BallBasket;
 
 public class BallBasketLogic {
-	public long retrieveAllBallsWeight(BallBasket basket) {
-		long weight = 0;
+	public BigInteger retrieveAllBallsWeight(BallBasket basket) {
+		BigInteger generalWeight = new BigInteger("0");
+		long separateBallWeight;
 		if (basket != null) {
 			for (Map.Entry<Ball, Integer> element : basket.getBalls().entrySet()) {
-				weight += element.getKey().getWeight() * element.getValue();
+				separateBallWeight = (long) element.getKey().getWeight() * element.getValue();
+				generalWeight = generalWeight.add(new BigInteger(Long.toString(separateBallWeight)));
 			}
 		}
-		return weight;
+		return generalWeight;
 	}
 
-	public int retrieveBallsAmountByColor(BallBasket basket, String color) {
-		int amount = 0;
+	public BigInteger retrieveBallsAmountByColor(BallBasket basket, String color) {
+		BigInteger amount = new BigInteger("0");
 		if (basket != null) {
 			for (Map.Entry<Ball, Integer> element : basket.getBalls().entrySet()) {
 				if (element.getKey().getColor().equals(color)) {
-					amount += element.getValue();
+					amount = amount.add(new BigInteger(element.getValue().toString()));
 				}
 			}
 		}

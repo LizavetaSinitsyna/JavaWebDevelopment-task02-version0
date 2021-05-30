@@ -5,6 +5,8 @@
 
 package by.epamtc.sinitsyna.runner;
 
+import java.math.BigInteger;
+
 import by.epamtc.sinitsyna.bean.BallBasket;
 import by.epamtc.sinitsyna.exception.NonPositiveException;
 import by.epamtc.sinitsyna.exception.NullBallException;
@@ -15,8 +17,8 @@ import by.epamtc.sinitsyna.presentation.BallBasketView;
 
 public class Main {
 	public static void main(String[] args) {
-		long weight;
-		int ballsAmount;
+		BigInteger weight;
+		BigInteger ballsAmount;
 		String color;
 		BallBasket basket;
 		boolean removeResult;
