@@ -6,8 +6,11 @@
 package by.epamtc.sinitsyna.bean;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import by.epamtc.sinitsyna.exception.NonPositiveException;
 import by.epamtc.sinitsyna.exception.NullBallException;
@@ -27,8 +30,12 @@ public class BallBasket implements Serializable {
 		setBalls(balls);
 	}
 
+	public Iterator<Entry<Ball, Integer>> getBallsIterator() {
+		return balls.entrySet().iterator();
+	}
+	
 	public Map<Ball, Integer> getBalls() {
-		return balls;
+		return Collections.unmodifiableMap(balls);
 	}
 
 	/*
@@ -59,10 +66,10 @@ public class BallBasket implements Serializable {
 		if (ballsAmount < 1) {
 			throw new NonPositiveException("The amount of balls to add can't be less than 1.");
 		}
-		if (!balls.containsKey(ball)) {
-			balls.put(ball, ballsAmount);
-		} else {
+		if (balls.containsKey(ball)) {
 			balls.put(ball, balls.get(ball) + ballsAmount);
+		} else {
+			balls.put(ball, ballsAmount);
 		}
 	}
 

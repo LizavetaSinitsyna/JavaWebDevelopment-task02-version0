@@ -27,7 +27,7 @@ public class Main {
 		BallBasketView view = new BallBasketView();
 
 		try {
-			basket = input.requestBalls("Пожалуйста, введите количество шариков для добавления в корзину >>");
+			basket = input.requestBalls("Пожалуйста, введите количество мячиков для добавления в корзину >>");
 			view.printBasketContent(basket);
 
 			removeResult = basket.removeBall(input

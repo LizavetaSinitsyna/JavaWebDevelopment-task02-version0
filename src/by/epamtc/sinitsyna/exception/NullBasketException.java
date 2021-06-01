@@ -15,4 +15,8 @@ public class NullBasketException extends Exception {
 	public NullBasketException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+	public NullBasketException(Throwable cause) {
+		super(cause);
+	}
 }

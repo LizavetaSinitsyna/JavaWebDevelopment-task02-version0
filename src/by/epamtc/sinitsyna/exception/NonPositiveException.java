@@ -16,4 +16,8 @@ public class NonPositiveException extends Exception {
 		super(message, cause);
 	}
 
+	public NonPositiveException(Throwable cause) {
+		super(cause);
+	}
+
 }

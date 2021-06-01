@@ -15,5 +15,9 @@ public class NullBallException extends Exception {
 	public NullBallException(String message, Throwable cause) {
 		super(message, cause);
 	}
+	
+	public NullBallException(Throwable cause) {
+		super(cause);
+	}
 
 }

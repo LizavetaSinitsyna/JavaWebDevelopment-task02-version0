@@ -18,13 +18,10 @@ public class Ball implements Serializable {
 
 	public Ball() {
 		weight = 1;
-		color = null;
 	}
 
 	public Ball(int weight, String color) throws NonPositiveException {
-		if (weight < 1) {
-			throw new NonPositiveException("The weight can't be negative or equal to 0.");
-		}
+		checkWeightValidation(weight);
 		this.weight = weight;
 		this.color = color;
 	}
@@ -34,9 +31,7 @@ public class Ball implements Serializable {
 	}
 
 	public void setWeight(int weight) throws NonPositiveException {
-		if (weight < 1) {
-			throw new NonPositiveException("The weight can't be negative or equal to 0.");
-		}
+		checkWeightValidation(weight);
 		this.weight = weight;
 	}
 
@@ -49,6 +44,12 @@ public class Ball implements Serializable {
 
 	public void setColor(String color) {
 		this.color = color;
+	}
+	
+	private void checkWeightValidation(int weight) throws NonPositiveException {
+		if (weight < 1) {
+			throw new NonPositiveException("The weight can't be negative or equal to 0.");
+		}
 	}
 
 	@Override
